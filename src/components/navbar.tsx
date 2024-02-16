@@ -6,9 +6,10 @@ const Navbar = () => {
 	const { user, logout } = useAuth();
 	const navigate = useNavigate();
 
-	const handleSignOut = async () => {
+	const handleLogOut = async () => {
 		try {
 			await logout();
+			navigate('/auth/login');
 		} catch (error) {
 			console.log(error);
 		}
@@ -21,7 +22,7 @@ const Navbar = () => {
 			</h1>
 			{user ? (
 				<>
-					<button onClick={handleSignOut}>Logout</button>
+					<button onClick={handleLogOut}>Logout</button>
 					<button onClick={() => navigate('/profile')}>Profile</button>
 				</>
 			) : (

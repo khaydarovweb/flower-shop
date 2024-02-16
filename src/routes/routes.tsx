@@ -11,7 +11,7 @@ import Register from '../pages/auth/register';
 function App() {
 	const { user } = useAuth();
 	const isAllowed = !user;
-	console.log('has user: ', isAllowed);
+	console.log('hasUser: ', isAllowed);
 
 	return (
 		<div>
@@ -19,12 +19,14 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/auth" element={<Protected allowed={isAllowed} to="/" />}>
-					<Route index path="*" element={<Navigate to="/auth/login" />} />
 					<Route path="login" element={<Login />} />
 					<Route path="register" element={<Register />} />
 				</Route>
 
 				<Route path="/profile" element={<Protected allowed={!isAllowed} to="/profile" />} />
+
+				{/* Wildcard route for unmatched paths */}
+				<Route path="*" element={<Navigate to="/auth/login" />} />
 			</Routes>
 		</div>
 	);
