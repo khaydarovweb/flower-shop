@@ -1,18 +1,15 @@
-import React, { ReactNode } from 'react';
-import { Navigate } from 'react-router-dom';
-import { UserAuth } from '../modules/auth/context';
+import React from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
-interface UserType {
-  // Define the structure of your user object here
+interface ProtectedProps {
+		allowed: boolean;
+		to: string;
 }
 
-const Protected = ({ children }: { children: ReactNode }) => {
-  const { user } = UserAuth();
-  if (!user) {
-    return <Navigate to="/" />;
-  }
+const Protected: React.FC<ProtectedProps> = ({ allowed, to }) => {
+		if (!allowed) return <Navigate to={to} />;
 
-  return <>{children}</>;
+		return <Outlet />;
 };
 
 export default Protected;
