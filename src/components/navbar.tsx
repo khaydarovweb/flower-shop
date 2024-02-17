@@ -16,15 +16,15 @@ const Navbar = () => {
 	};
 
 	return (
-		<div className="flex justify-between bg-gray-200 w-full p-4">
+		<div className="flex justify-between bg-gray-200 w-full p-4 sticky">
 			<h1 className="text-center text-2xl font-bold" onClick={() => navigate('/')}>
 				Firebase Google Auth & Context
 			</h1>
 			{user ? (
-				<>
+				<span>
 					<button onClick={handleLogOut}>Logout</button>
 					<button onClick={() => navigate('/profile')}>Profile</button>
-				</>
+				</span>
 			) : (
 				<>
 					<Link to="/auth/login">Log in</Link>

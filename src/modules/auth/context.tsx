@@ -9,7 +9,11 @@ import {
 } from 'firebase/auth';
 
 interface AuthContextType {
-	user: any;
+	user: {
+		username: string;
+		email: string;
+		password: string;
+	};
 	register: (email: string, password: string) => Promise<void>;
 	login: (email: string, password: string) => Promise<void>;
 	logout: () => Promise<void>;
@@ -29,7 +33,8 @@ interface AuthProviderProps {
 	children: React.ReactNode;
 }
 
-export const AuthContextProvider: React.FC<AuthProviderProps> = ({ children }) => { // <-- Ensure it's named AuthContextProvider here
+export const AuthContextProvider: React.FC<AuthProviderProps> = ({ children }) => {
+	// <-- Ensure it's named AuthContextProvider here
 	const [user, setUser] = useState<any>(null);
 
 	useEffect(() => {

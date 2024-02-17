@@ -8,28 +8,27 @@ import Home from '../pages/home';
 import Login from '../pages/auth/login';
 import Register from '../pages/auth/register';
 
-function App() {
+function Router() {
 	const { user } = useAuth();
 	const isAllowed = !user;
-	console.log('hasUser: ', isAllowed);
 
 	return (
-		<div>
-			<Navbar />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/auth" element={<Protected allowed={isAllowed} to="/" />}>
-					<Route path="login" element={<Login />} />
-					<Route path="register" element={<Register />} />
-				</Route>
+		<Routes>
+			<Route path="/" element={<Home />} />
+			<Route path="/auth" element={<Protected allowed={isAllowed} to="/" />}>
+				<Route path="login" element={<Login />} />
+				<Route path="register" element={<Register />} />
+			</Route>
 
-				<Route path="/profile" element={<Protected allowed={!isAllowed} to="/profile" />} />
+			{user ? (
+				<Route path="/profile" element={<Profile />} />
+			) : (
+				<Route path="/profile" element={<Navigate to="/auth/login" />} />
+			)}
 
-				{/* Wildcard route for unmatched paths */}
-				<Route path="*" element={<Navigate to="/auth/login" />} />
-			</Routes>
-		</div>
+			<Route path="*" element={<Navigate to="/auth/login" />} />
+		</Routes>
 	);
 }
 
-export default App;
+export default Router;
