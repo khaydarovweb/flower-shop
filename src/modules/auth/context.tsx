@@ -1,6 +1,5 @@
-// context.tsx
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { auth } from '../../utils/firebase';
+import { auth } from '../../utils';
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,

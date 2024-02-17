@@ -1,12 +1,9 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Navbar from '../components/navbar';
+import {Navbar} from '../components';
 import Protected from './protected';
 import { useAuth } from '../modules/auth/context';
-import Profile from '../pages/auth/profile';
-import Home from '../pages/home';
-import Login from '../pages/auth/login';
-import Register from '../pages/auth/register';
+import {Home, Profile, Login, Register} from '../pages';
 
 function Router() {
 	const { user } = useAuth();
