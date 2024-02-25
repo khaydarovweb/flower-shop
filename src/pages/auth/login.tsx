@@ -4,6 +4,8 @@ import { useAuth } from '../../modules/auth/context';
 import { FaHouse } from 'react-icons/fa6';
 
 import LoginLeft from '../../assets/imgs/login.png';
+import { Form } from 'antd';
+import { FieldNamesType } from 'antd/es/cascader';
 
 interface LoginProps {}
 
@@ -22,6 +24,10 @@ const Login = (props: LoginProps) => {
 		} catch (error) {
 			console.log(error);
 		}
+	};
+
+	const onFinishFailed = (errorInfo: any) => {
+		console.log('Failed:', errorInfo);
 	};
 
 	return (

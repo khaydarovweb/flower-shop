@@ -1,9 +1,60 @@
+// import { useNavigate } from 'react-router-dom';
+// import { useAuth } from '../../modules/auth/context';
+
+// interface RegisterProps {}
+
+// const Register = (props: RegisterProps) => {
+// 	const { register } = useAuth();
+// 	const navigate = useNavigate();
+
+// 	const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
+// 		try {
+// 			e.preventDefault();
+// 			const formData = new FormData(e.currentTarget);
+// 			const email = formData.get('email') as string;
+// 			const password = formData.get('password') as string;
+// 			register(email, password);
+// 			navigate('/profile');
+// 		} catch (error) {
+// 			console.log(error);
+// 		}
+// 	};
+
+// 	return (
+// 		<form className="m-2" onSubmit={handleRegister}>
+// 			<h3 className="text-lg font-bold"> Register User </h3>
+// 			<input
+// 				className="bg-white text-black border border-gray-500 rounded-md p-2 outline-none"
+// 				placeholder="Email..."
+// 				name="email"
+// 			/>
+// 			<input
+// 				className="bg-white text-black border border-gray-500 rounded-md p-2 outline-none"
+// 				placeholder="Password..."
+// 				name="password"
+// 			/>
+
+// 			<button className="bg-yellow-500 text-white rounded-md px-4 py-2 mt-2" type="submit">
+// 				Create User
+// 			</button>
+// 		</form>
+// 	);
+// };
+
+// export default Register;
+
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../modules/auth/context';
 
-interface RegisterProps {}
+import { FaHouse } from 'react-icons/fa6';
 
-const Register = (props: RegisterProps) => {
+import LoginLeft from '../../assets/imgs/login.png';
+import { Form } from 'antd';
+import { FieldNamesType } from 'antd/es/cascader';
+
+interface LoginProps {}
+
+const Register = (props: LoginProps) => {
 	const { register } = useAuth();
 	const navigate = useNavigate();
 
@@ -21,23 +72,50 @@ const Register = (props: RegisterProps) => {
 	};
 
 	return (
-		<form className="m-2" onSubmit={handleRegister}>
-			<h3 className="text-lg font-bold"> Register User </h3>
-			<input
-				className="bg-white text-black border border-gray-500 rounded-md p-2 outline-none"
-				placeholder="Email..."
-				name="email"
-			/>
-			<input
-				className="bg-white text-black border border-gray-500 rounded-md p-2 outline-none"
-				placeholder="Password..."
-				name="password"
-			/>
+		<section className="h-screen flex">
+			<div className="p-14 w-2/4">
+				<form className="m-2" onSubmit={handleRegister}>
+					<span className="w-full flex justify-between">
+						<span>
+							<h3 className="font-medium text-[52px]">Register</h3>
+							<p className="font-[32px] text-[#838383]">
+								Create your own profile and have more fun
+							</p>
+						</span>
+						<button className="flex items-center gap-2" onClick={() => navigate('/')}>
+							{' '}
+							<FaHouse color="#FF8F52" />
+							Back to home
+						</button>
+					</span>
+					<span className="flex flex-col py-5 gap-5">
+						<input
+							className="bg-white border border-[#D9D9D9] rounded-md p-2 outline-none font-[22px] text-[#838383]"
+							placeholder="Email..."
+							name="email"
+						/>
+						<input
+							className="bg-white border border-[#D9D9D9] rounded-md p-2 outline-none font-[22px] text-[#838383]"
+							placeholder="Password..."
+							name="password"
+						/>
 
-			<button className="bg-yellow-500 text-white rounded-md px-4 py-2 mt-2" type="submit">
-				Create User
-			</button>
-		</form>
+						<button className="bg-orange-400 text-white rounded-md px-4 py-2 mt-2" type="submit">
+							Register
+						</button>
+					</span>
+					<p className="text-center">
+						Do you have an account?{' '}
+						<span className="text-[#FF8F52]" onClick={() => navigate('/auth/profile')}>
+							Login
+						</span>
+					</p>
+				</form>
+			</div>
+			<div className="w-2/4">
+				<img className="h-full w-full object-cover" src={LoginLeft} alt="" />
+			</div>
+		</section>
 	);
 };
 
