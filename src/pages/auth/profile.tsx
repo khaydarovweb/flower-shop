@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 const Account = () => {
 	const { logout, user } = useAuth();
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const handleLogout = async () => {
 		try {
 			await logout();
-      navigate('/auth/login');
+			navigate('/auth/login');
 		} catch (error) {
 			console.log(error);
 		}
@@ -21,7 +21,7 @@ const Account = () => {
 			{user?.email && <p className="text-xl">{user.email}</p>}
 
 			<button className="bg-yellow-500 text-white rounded-md px-4 py-2 mt-2" onClick={handleLogout}>
-				Sign Out
+				Log Out
 			</button>
 		</div>
 	);

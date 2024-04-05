@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../modules/auth/context';
 
 import { FaCartShopping } from 'react-icons/fa6';
-import { VscAccount } from 'react-icons/vsc';
+import { MdAccountCircle } from 'react-icons/md';
 
 const Navbar = () => {
 	const { user } = useAuth();
@@ -24,17 +24,11 @@ const Navbar = () => {
 			</nav>
 			{user ? (
 				<span className="flex items-center gap-5">
-					<button
-						className="p-2 bg-[#ff8f52] text-white rounded-md"
-						onClick={() => navigate('/cart')}
-					>
-						<FaCartShopping size={28} />
+					<button onClick={() => navigate('/cart')}>
+						<FaCartShopping size={28} color="#ff8f52" />
 					</button>
-					<button
-						className="p-2 bg-[#ff8f52] text-white rounded-md"
-						onClick={() => navigate('/profile')}
-					>
-						<VscAccount size={28} />
+					<button onClick={() => navigate('/profile')}>
+						<MdAccountCircle size={32} color="#ff8f52" />
 					</button>
 				</span>
 			) : (
