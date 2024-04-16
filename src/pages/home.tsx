@@ -1,13 +1,12 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import { default as Sec1 } from "./home/sec1";
 
 const Home = () => {
 	return (
 		<section>
 			<Navbar />
-			<div>
-				<h1 className="text-center text-3xl font-bold py-8">Home Page🌻</h1>
-			</div>
+			<Sec1/>
 		</section>
 	);
 };

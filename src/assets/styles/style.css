@@ -16,3 +16,16 @@ code {
 html {
 	background-color: #f2f2f2;
 }
+
+.btn-primary {
+	border-radius: 5px;
+	background: #ff8f52;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	border: 0px;
+	cursor: pointer;
+}

@@ -10,7 +10,7 @@ const Navbar = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="flex justify-between items-center bg-white w-full p-5 sticky">
+		<div className="h-[100px] flex justify-between items-center bg-white w-full p-5 sticky">
 			<h1 className="text-center text-2xl font-bold" onClick={() => navigate('/')}>
 				<span className="text-[#FF8F52]">Flower</span> Shop
 			</h1>
